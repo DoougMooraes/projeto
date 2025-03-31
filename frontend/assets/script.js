@@ -4,7 +4,7 @@
  */
 
 // URL base da API
-const URL_API = 'http://localhost:3000/api';
+const URL_API = 'projeto-production-4e58.up.railway.app/api';
 
 /**
  * Função para buscar estabelecimentos e exibir os destaques na home page.
