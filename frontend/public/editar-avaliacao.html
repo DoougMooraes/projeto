@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cidades Conectadas - Editar Avaliação</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <script src="../assets/script.js" defer></script>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Cidades Conectadas</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Seção de Edição de Avaliação -->
+    <section id="editar-avaliacao">
+        <h2>Editar Avaliação</h2>
+        <form id="form-edit-avaliacao">
+            <label for="estrelas">Avalie (1 a 5):</label>
+            <input type="number" id="estrelas" min="1" max="5" required>
+            
+            <label for="comentario">Comentário:</label>
+            <textarea id="comentario" required></textarea>
+            
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </section>
+    
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2025 Cidades Conectadas.</p>
+    </footer>
+
+    <script>
+        (function() {
+          const URL_API = 'http://localhost:3000/api';
+          // Função para extrair parâmetros da URL
+          function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+              avaliacaoId: params.get('id'),
+              estabelecimentoId: params.get('estabelecimento')
+            };
+          }
+      
+          async function editarAvaliacao(event) {
+            event.preventDefault();
+            const { avaliacaoId, estabelecimentoId } = getQueryParams();
+            const estrelas = document.getElementById('estrelas').value;
+            const comentario = document.getElementById('comentario').value;
+            const token = localStorage.getItem('token');
+      
+            if (!token) {
+                alert('Você precisa estar logado para editar sua avaliação.');
+                return;
+            }
+      
+            try {
+                const resposta = await fetch(`${URL_API}/avaliacao/${avaliacaoId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': token
+                    },
+                    body: JSON.stringify({ estrelas, comentario })
+                });
+      
+                const dados = await resposta.json();
+                if (resposta.ok) {
+                    alert(dados.mensagem);
+                    window.location.href = `detalhes-estabelecimento.html?id=${estabelecimentoId}`;
+                } else {
+                    alert(dados.mensagem);
+                }
+            } catch (erro) {
+                console.error('Erro ao editar avaliação:', erro);
+            }
+          }
+      
+          document.getElementById('form-edit-avaliacao').addEventListener('submit', editarAvaliacao);
+        })();
+      </script>
+</body>
+</html>

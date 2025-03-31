@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cidades Conectadas - Detalhes do Estabelecimento</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <script src="../assets/script.js" defer></script>
+    <!-- Inclua a API do Google Maps com sua chave -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_API"></script>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Cidades Conectadas</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Detalhes do Estabelecimento -->
+    <section id="detalhes-estabelecimento">
+        <h2 id="nome-estabelecimento">Nome do Estabelecimento</h2>
+        <img id="banner-estabelecimento" src="" alt="Imagem do Estabelecimento">
+        <p id="descricao-estabelecimento">Descrição do estabelecimento</p>
+        <div id="mapa" style="width: 100%; height: 400px;"></div>
+    </section>
+    
+    <!-- Avaliações -->
+    <section id="avaliacoes">
+        <h2>Avaliações</h2>
+        <div id="lista-avaliacoes">
+            <!-- As avaliações serão inseridas via JavaScript -->
+        </div>
+        <form id="form-avaliacao">
+            <label for="estrelas">Avalie (1 a 5):</label>
+            <input type="number" id="estrelas" min="1" max="5" required>
+            
+            <label for="comentario">Comentário:</label>
+            <textarea id="comentario" required></textarea>
+            
+            <button type="submit">Enviar Avaliação</button>
+        </form>
+    </section>
+    
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2025 Cidades Conectadas.</p>
+    </footer>
+</body>
+</html>

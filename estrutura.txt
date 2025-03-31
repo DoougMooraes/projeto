@@ -1,0 +1,27 @@
+projeto/
+│
+├── backend/
+│   ├── server.js             // Arquivo principal do servidor
+│   ├── db.js                 // Configuração da conexão com o MySQL
+│   ├── rotas.js              // Definição das rotas da API
+│   ├── middleware.js         // Middlewares (ex.: autenticação JWT)
+│   ├── controllers/          // Lógica dos controladores da API
+│   │   ├── authController.js // Login e cadastro de usuários
+│   │   ├── estabelecimentoController.js // Cadastro e consulta de estabelecimentos
+│   │   └── avaliacaoController.js         // Cadastro e listagem de avaliações
+│   └── models/               // Modelos (documentação das tabelas)
+│       ├── Usuario.js
+│       ├── Estabelecimento.js
+│       └── Avaliacao.js
+│
+├── frontend/
+│   ├── public/
+│   │   ├── index.html              // Página inicial (home)
+│   │   ├── login.html              // Página de login
+│   │   └── estabelecimento.html    // Página de detalhes do estabelecimento
+│   └── assets/                     // Arquivos estáticos (CSS, JS, imagens)
+│       ├── style.css               // Estilos gerais
+│       └── script.js               // Lógica de interação com a API
+│
+├── package.json             // Dependências e scripts do Node.js
+└── .gitignore               // Arquivos a serem ignorados pelo Git
